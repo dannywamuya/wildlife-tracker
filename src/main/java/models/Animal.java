@@ -36,10 +36,20 @@ public class Animal extends WildLife {
     public static Animal findById(int id) {
         try(Connection con = DB.sql2o.open()) {
             String sql = "SELECT * FROM animals where id=:id";
-            Animal animal = con.createQuery(sql)
+            return con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Animal.class);
-            return animal;
+        }
+    }
+
+    public static void update(int id, String name) {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "UPDATE animals SET name = :name WHERE id = :id";
+            con.createQuery(sql)
+                    .addParameter("name", name)
+                    .addParameter("id", id)
+                    .throwOnMappingFailure(false)
+                    .executeUpdate();
         }
     }
 }

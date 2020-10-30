@@ -67,4 +67,16 @@ public class AnimalTest {
         secondAnimal.save();
         assertEquals(Animal.findById(secondAnimal.getId()), secondAnimal);
     }
+
+    @Test
+    public void update_changesExistingAnimalName_Lion(){
+        Animal testAnimal = createNewAnimal();
+        String oldName = testAnimal.getName();
+        testAnimal.save();
+        Animal.update(testAnimal.getId(), "Lion");
+        int sameId = testAnimal.getId();
+        assertEquals(sameId, Animal.findById(testAnimal.getId()).getId());
+        assertEquals("Lion", Animal.findById(testAnimal.getId()).getName());
+        assertNotEquals(oldName, Animal.findById(testAnimal.getId()).getName());
+    }
 }
