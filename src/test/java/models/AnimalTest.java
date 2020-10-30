@@ -15,10 +15,18 @@ public class AnimalTest {
         Animal testAnimal = createNewAnimal();
         assertEquals(true, testAnimal instanceof Animal);
     }
+
     @Test
     public void Animal_instantiatesWithType_NonEndangered() {
         Animal testAnimal = createNewAnimal();
         assertEquals("Non-Endangered", testAnimal.getType());
     }
 
+    @Test
+    public void equals_returnsTrueIfNameAndTypeAreSame_true() {
+        Animal testAnimal = createNewAnimal();
+        Animal anotherAnimal = createNewAnimal();
+        assertTrue(testAnimal.equals(anotherAnimal));
+        assertTrue(testAnimal.animalType.equals(anotherAnimal.animalType));
+    }
 }
