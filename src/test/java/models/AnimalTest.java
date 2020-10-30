@@ -50,4 +50,12 @@ public class AnimalTest {
         assertEquals(true, Animal.getAll().get(0).equals(firstAnimal));
         assertEquals(true, Animal.getAll().get(1).equals(secondAnimal));
     }
+
+    @Test
+    public void save_assignsIdToObject() {
+        Animal testAnimal = createNewAnimal();
+        testAnimal.save();
+        Animal savedAnimal = Animal.getAll().get(0);
+        assertEquals(testAnimal.getId(), savedAnimal.getId());
+    }
 }
