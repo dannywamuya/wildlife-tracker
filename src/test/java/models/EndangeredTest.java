@@ -45,7 +45,7 @@ public class EndangeredTest {
     }
 
     @Test
-    public void save_assignsIdToObject() {
+    public void save_assignsIdToEndangeredAnimal() {
         Endangered testAnimal = createEndangeredAnimal();
         testAnimal.save();
         Endangered savedAnimal = Endangered.getAll().get(0);
@@ -80,6 +80,8 @@ public class EndangeredTest {
         int sameId = testAnimal.getId();
         assertEquals(sameId, Endangered.findById(testAnimal.getId()).getId());
         assertEquals("Lion", Endangered.findById(testAnimal.getId()).getName());
+        assertEquals("Healthy", Endangered.findById(testAnimal.getId()).getHealth());
+        assertEquals("Young", Endangered.findById(testAnimal.getId()).getAge());
         assertNotEquals(oldName, Endangered.findById(testAnimal.getId()).getName());
     }
 
