@@ -7,5 +7,4 @@ public class Animal extends WildLife {
         this.name = name;
         this.type = animalType;
     }
-
 }
