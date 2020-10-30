@@ -79,4 +79,14 @@ public class AnimalTest {
         assertEquals("Lion", Animal.findById(testAnimal.getId()).getName());
         assertNotEquals(oldName, Animal.findById(testAnimal.getId()).getName());
     }
+
+    @Test
+    public void deleteAnimal_removesAnimalFromDatabase(){
+        Animal testAnimal = createNewAnimal();
+        testAnimal.save();
+        Animal otherAnimal = createNewAnimal();
+        otherAnimal.save();
+        otherAnimal.delete();
+        assertEquals(1,Animal.getAll().size());
+    }
 }

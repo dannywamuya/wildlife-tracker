@@ -1,5 +1,7 @@
 package models;
 
+import org.sql2o.Connection;
+
 import java.util.Objects;
 
 public class WildLife {
@@ -8,6 +10,15 @@ public class WildLife {
     public String age;
     public String health;
     public String type;
+
+    public void delete() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "DELETE FROM animals WHERE id = :id;";
+            con.createQuery(sql)
+                    .addParameter("id", this.id)
+                    .executeUpdate();
+        }
+    }
 
     public int getId() {
         return id;
