@@ -2,6 +2,7 @@ package models;
 
 import org.junit.Rule;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class AnimalTest {
@@ -42,6 +43,14 @@ public class AnimalTest {
     }
 
     @Test
+    public void save_assignsIdToObject() {
+        Animal testAnimal = createNewAnimal();
+        testAnimal.save();
+        Animal savedAnimal = Animal.getAll().get(0);
+        assertEquals(testAnimal.getId(), savedAnimal.getId());
+    }
+
+    @Test
     public void all_returnsAllInstancesOfPerson_true() {
         Animal firstAnimal = createNewAnimal();
         firstAnimal.save();
@@ -49,14 +58,6 @@ public class AnimalTest {
         secondAnimal.save();
         assertEquals(true, Animal.getAll().get(0).equals(firstAnimal));
         assertEquals(true, Animal.getAll().get(1).equals(secondAnimal));
-    }
-
-    @Test
-    public void save_assignsIdToObject() {
-        Animal testAnimal = createNewAnimal();
-        testAnimal.save();
-        Animal savedAnimal = Animal.getAll().get(0);
-        assertEquals(testAnimal.getId(), savedAnimal.getId());
     }
 
     @Test
