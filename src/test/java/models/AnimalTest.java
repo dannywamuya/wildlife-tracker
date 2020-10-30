@@ -51,7 +51,7 @@ public class AnimalTest {
     }
 
     @Test
-    public void all_returnsAllInstancesOfPerson_true() {
+    public void all_returnsAllInstancesOfAnimal_true() {
         Animal firstAnimal = createNewAnimal();
         firstAnimal.save();
         Animal secondAnimal = new Animal("Rhino");
@@ -61,7 +61,7 @@ public class AnimalTest {
     }
 
     @Test
-    public void find_returnsPersonWithSameId_secondPerson() {
+    public void find_returnsAnimalWithSameId_secondAnimal() {
         Animal firstAnimal = createNewAnimal();
         firstAnimal.save();
         Animal secondAnimal = new Animal("Rhino");
