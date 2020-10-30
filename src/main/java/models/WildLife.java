@@ -3,13 +3,13 @@ package models;
 import java.util.Objects;
 
 public class WildLife {
-    public String id;
+    public int id;
     public String name;
     public String age;
     public String health;
     public String type;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
