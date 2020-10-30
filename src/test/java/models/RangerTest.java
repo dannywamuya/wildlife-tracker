@@ -63,7 +63,7 @@ public class RangerTest {
     }
 
     @Test
-    public void update_changesExistingEndangeredRanger_Lion(){
+    public void update_changesExistingEndangeredRanger_Brian(){
         Ranger testRanger = createNewRanger();
         String oldName = testRanger.getName();
         testRanger.save();
