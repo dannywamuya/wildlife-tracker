@@ -4,7 +4,6 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 import static org.junit.Assert.*;
 
@@ -77,6 +76,31 @@ public class SightingTest {
         Sighting secondSighting = new Sighting(2,2,2);
         secondSighting.save();
         assertEquals(Sighting.findById(secondSighting.getId()), secondSighting);
+    }
+
+    @Test
+    public void update_changesExistingSighting_2(){
+        Sighting testSighting = createNewSighting();
+        int oldLocation = testSighting.getLocation_id();
+        testSighting.save();
+
+        Sighting.update(testSighting.getId(), 2,2,2);
+
+        int sameId = testSighting.getId();
+
+        assertEquals(sameId, Sighting.findById(testSighting.getId()).getId());
+        assertEquals(2, Sighting.findById(testSighting.getId()).getAnimal_id());
+        assertNotEquals(oldLocation, Sighting.findById(testSighting.getId()).getLocation_id());
+    }
+
+    @Test
+    public void deleteSighting_removesSightingFromDatabase(){
+        Sighting testSighting = createNewSighting();
+        testSighting.save();
+        Sighting otherSighting = createNewSighting();
+        otherSighting.save();
+        otherSighting.delete();
+        assertEquals(1, Sighting.getAll().size());
     }
 
 }
