@@ -23,7 +23,7 @@ public class Animal extends WildLife {
 
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO animals (name, type) VALUES (:name, :type)";
+            String sql = "INSERT INTO animals (name, type, age, health) VALUES (:name, :type, 'null', 'null')";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.name)
                     .addParameter("type", this.type)
