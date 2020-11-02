@@ -1,8 +1,6 @@
 function endangeredForm() {
     //generate endangered From
-    var eForm = document.createElement("form");
-    eForm.setAttribute("action", "/sightings/new");
-    eForm.method = "post";
+    var eForm = document.getElementById("form-div");
 
     //add div for eName input
     var eNameDiv = document.createElement("div");
@@ -10,7 +8,7 @@ function endangeredForm() {
 
     //add eName label to form
     var eNameLabel = document.createElement("label");
-    eNameLabel.innerHTML = "Animal Name";
+    eNameLabel.innerHTML = "Animal Name : ";
     eNameLabel.htmlFor = "eName";
 
     //add eName input to form
@@ -38,7 +36,7 @@ function endangeredForm() {
     //add eAge label to form
     var eAgeLabel = document.createElement("label");
     eAgeLabel.setAttribute("for", "eAge");
-    eAgeLabel.innerHTML = "Animal Age";
+    eAgeLabel.innerHTML = "Animal Age : ";
     eAgeLabel.htmlFor = "eAge";
 
     //add eAge value options to select
@@ -68,7 +66,7 @@ function endangeredForm() {
     //add eHealth label to form
     var eHealthLabel = document.createElement("label");
     eHealthLabel.setAttribute("for", "eHealth");
-    eHealthLabel.innerHTML = "Animal Health";
+    eHealthLabel.innerHTML = "Animal Health : ";
     eHealthLabel.htmlFor = "eHealth";
 
     //add eHealth value options to select
@@ -83,25 +81,57 @@ function endangeredForm() {
     //create eHealth input
     eHealthDiv.appendChild(eHealthLabel).appendChild(eHealth);
 
+    //add div for location input
+    var lNameDiv = document.createElement("div");
+    lNameDiv.setAttribute("class", "form-group col-md-4");
+    lNameDiv.setAttribute("style", "width:200px;")
+
+    //add location select to form
+    var lName = document.createElement("select");
+    lName.setAttribute("id", "lName");
+    lName.setAttribute("name", "lName");
+    lName.setAttribute("class", "form-control");
+    lName.setAttribute("type", "text");
+
+    //add lName label to form
+    var lNameLabel = document.createElement("label");
+    lNameLabel.setAttribute("for", "lName");
+    lNameLabel.innerHTML = "Location : ";
+    lNameLabel.htmlFor = "lName";
+
+    //add lName value options to select
+    var locationValues = ["Zone A", "Zone B", "Zone C", "Zone D"];
+    for (const l of locationValues) {
+        var lNameOptions = document.createElement("option");
+        lNameOptions.setAttribute("value", l);
+        lNameOptions.text = l;
+        lName.appendChild(lNameOptions);
+    }
+
+    //create lName input
+    lNameDiv.appendChild(lNameLabel).appendChild(lName);
+
     //add submit input to form
     var eSubmit = document.createElement("input");
     eSubmit.setAttribute("type", "submit");
     eSubmit.setAttribute("value", "Add Animal");
-    eSubmit.setAttribute("class", "btn btn-default");
+    eSubmit.setAttribute("class", "btn btn-outline-success");
     eSubmit.setAttribute("onclick", "return validateE()");
 
     //add all inputs to form
     eForm.appendChild(eNameDiv);
     eForm.appendChild(eAgeDiv);
     eForm.appendChild(eHealthDiv);
+    eForm.appendChild(lNameDiv);
     eForm.appendChild(eSubmit);
-
-    //add form to template div
-    document.getElementById("form-div").appendChild(eForm);
 
     //hide button after click
     document.getElementById("endg-btn").style.display = "none";
     document.getElementById("thrv-btn").style.display = "none";
+    document.getElementById("anml-h4").style.display = "none";
+
+    document.getElementById("rngr-id").style.display = "block";
+    document.getElementById("dtl-h5").style.display = "block";
 }
 
 function validateE(){
@@ -115,9 +145,7 @@ function validateE(){
 
 function thrivingForm() {
     //generate animal From
-    var form = document.createElement("form");
-    form.setAttribute("action", "/sightings/new");
-    form.method = "post";
+    var form = document.getElementById("form-div");
 
     //add div for name input
     var nameDiv = document.createElement("div");
@@ -125,7 +153,7 @@ function thrivingForm() {
 
     //add name label to form
     var nameLabel = document.createElement("label");
-    nameLabel.innerHTML = "Animal Name";
+    nameLabel.innerHTML = "Animal Name : ";
     nameLabel.htmlFor = "name";
 
     //add name input to form
@@ -138,24 +166,55 @@ function thrivingForm() {
     //create name input
     nameDiv.appendChild(nameLabel).appendChild(name);
 
+    //add div for location input
+    var lNameDiv = document.createElement("div");
+    lNameDiv.setAttribute("class", "form-group col-md-4");
+    lNameDiv.setAttribute("style", "width:200px;")
+
+    //add location select to form
+    var lName = document.createElement("select");
+    lName.setAttribute("id", "lName");
+    lName.setAttribute("name", "lName");
+    lName.setAttribute("class", "form-control");
+    lName.setAttribute("type", "text");
+
+    //add lName label to form
+    var lNameLabel = document.createElement("label");
+    lNameLabel.setAttribute("for", "lName");
+    lNameLabel.innerHTML = "Location : ";
+    lNameLabel.htmlFor = "lName";
+
+    //add lName value options to select
+    var locationValues = ["Zone A", "Zone B", "Zone C", "Zone D"];
+    for (const l of locationValues) {
+        var lNameOptions = document.createElement("option");
+        lNameOptions.setAttribute("value", l);
+        lNameOptions.text = l;
+        lName.appendChild(lNameOptions);
+    }
+
+    //create lName input
+    lNameDiv.appendChild(lNameLabel).appendChild(lName);
+
     //add submit input to form
     var submit = document.createElement("input");
     submit.setAttribute("type", "submit");
     submit.setAttribute("value", "Add Animal");
-    submit.setAttribute("class", "btn btn-default");
+    submit.setAttribute("class", "btn btn-outline-success");
     submit.setAttribute("onclick", "return validate()");
 
     //add all inputs to form
     form.appendChild(nameDiv);
+    form.appendChild(lNameDiv);
     form.appendChild(submit);
-
-    //add form to template div
-    document.getElementById("form-div").appendChild(form);
 
     //hide button after click
     document.getElementById("thrv-btn").style.display = "none";
     document.getElementById("endg-btn").style.display = "none";
+    document.getElementById("anml-h4").style.display = "none";
 
+    document.getElementById("rngr-id").style.display = "block";
+    document.getElementById("dtl-h5").style.display = "block";
 }
 
 function validate(){

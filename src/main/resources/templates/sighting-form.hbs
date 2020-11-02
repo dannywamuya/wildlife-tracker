@@ -1,8 +1,39 @@
 {{#partial "content"}}
-    <h4>Add Animal</h4>
-    <button id="endg-btn" onclick="endangeredForm()" class="btn btn-outline-danger">Endangered Species</button>
-    <button id="thrv-btn" onclick="thrivingForm()" class="btn btn-outline-primary">Thriving Species</button>
 
-    <div id="form-div"></div>
+    {{#if rangers}}
+        <div style="margin : 50px 0px;" class="container">
+            <div id="anml-h4" style="width : 40%">
+                <h5>Add Animal</h5>
+                <hr>
+            </div>
+            <button id="endg-btn" onclick="endangeredForm()" class="btn btn-outline-danger">Endangered Species</button>
+            <button id="thrv-btn" onclick="thrivingForm()" class="btn btn-outline-primary">Thriving Species</button>
+        </div>
+
+        <div class="center">
+            <div id="dtl-h5" style="display : none;">
+                <h5><strong>Enter sighting detail</strong></h5>
+                <hr>
+            </div>
+            <form method="post" action="/sightings/new" id="form-div">
+
+                <div class="txt_field" id="rngr-id" style="display : none;">
+                    <label for="rangerId">Ranger Name : </label>
+                    <select id="rangerId" name="rangerId">
+                        {{#each rangers}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </form>
+        </div>
+
+    {{else}}
+        <div class="txt_field">
+            <p>Need to join as ranger first <a href="/rangers/new" style="text-decoration : none;">Join here</a></p>
+        </div>
+
+    {{/if}}
+
 {{/partial}}
 {{>layout.hbs}}

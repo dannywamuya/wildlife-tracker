@@ -1,0 +1,37 @@
+{{#partial "content"}}
+
+    <h5 style="text-align : center; padding : 20px 0; "><strong>All Animals</strong></h5>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Age</th>
+            <th scope="col">Health</th>
+        </tr>
+        </thead>
+    {{#each endangered}}
+        <tbody>
+        <tr>
+            <th scope="row">{{ id }}</th>
+            <td>{{ name }}</td>
+            <td>{{ type }}</td>
+            <td>{{ age }}</td>
+            <td>{{ health }}</td>
+        </tr>
+    {{/each}}
+    {{#each thriving}}
+        <tr>
+            <th scope="row">{{ id }}</th>
+            <td>{{ name }}</td>
+            <td>{{ type }}</td>
+            <td> N/A </td>
+            <td> Okay </td>
+        </tr>
+        </tbody>
+    {{/each}}
+    </table>
+
+{{/partial}}
+{{>layout.hbs}}
