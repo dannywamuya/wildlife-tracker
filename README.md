@@ -18,10 +18,6 @@ http://dannywildlifetracker.herokuapp.com/
 - Maven
 - PostgreSql
 
-## Setup Instructions
-- Install PostgreSql on your computer for the backend 
-- Run the following command in psql to setup the database
-
 ## Support and contact details
 If you come across any issues, reach me at dwamuya@gmail.com or comment on the issue via GitHub. 
 
